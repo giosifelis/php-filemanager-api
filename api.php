@@ -1,8 +1,9 @@
 <?php
+session_start();
+
 require 'config.php';
 include_once './apiFunctions.php';
 include_once './utils.php';
-session_start();
 
 // header("Access-Control-Allow-Origin: *");
 // header("Content-Type: application/json; charset=UTF-8");
