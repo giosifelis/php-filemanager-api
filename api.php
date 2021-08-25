@@ -57,7 +57,7 @@ $newContent = $apiInput->newContent;
 
         $jsonRes = json_encode(array(
             'error' => true,
-            'msg' => 'Do Params'
+            'msg' => 'No Params'
           ));
             echo $jsonRes; 
             exit;
