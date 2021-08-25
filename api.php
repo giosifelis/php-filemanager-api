@@ -23,24 +23,19 @@ $password = $apiInput->password;
 
   if ($action === LOGIN) {
 
-    if ($userName === 'cubapiano' && $password === '12345') {
+    if ($userName === USERNAME && sha1($password) === PASSWORD_HASHED) {
+      
       $_SESSION['isLoggedIn'] = true;
+      $jsonRes = json_encode(responseMessage(false, LOGIN_SUCCESS));
+      echo $jsonRes; 
+      exit;
 
-      $jsonRes = json_encode(
-        array(
-          'error' => false,
-          'msg' => LOGIN_SUCCESS
-        ));
-        echo $jsonRes; 
-        exit;
     } else {
-      $jsonRes = json_encode(
-        array(
-          'error' => true,
-          'msg' => LOGIN_ERROR
-        ));
-        echo $jsonRes; 
-        exit;
+      
+      $jsonRes = json_encode(responseMessage(true, LOGIN_ERROR));
+      echo $jsonRes; 
+      exit;
+      
     }
 
   } elseif($action === LOGOUT) {
@@ -48,11 +43,7 @@ $password = $apiInput->password;
     unset($_SESSION['isLoggedIn']);
     session_unset();
 
-    $jsonRes = json_encode(
-      array(
-        'error' => false,
-        'msg' => LOGOUT_SUCCESS
-      ));
+    $jsonRes = json_encode(responseMessage(false, LOGOUT_SUCCESS));
       echo $jsonRes; 
       exit;
 

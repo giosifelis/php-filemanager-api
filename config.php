@@ -24,8 +24,10 @@ define('GET_DIR_SUCCESS', "Success opening folder");
 define('GET_DIR_ERROR', "Failed opening folder");
 
 // ----- LOGIN -----
-define('LOGIN_SUCCESS', "User is Loggedin");
-define('LOGIN_ERROR', "User is NOT Loggedin");
+define('USERNAME', "admin");
+define('PASSWORD_HASHED', "8cb2237d0679ca88db6464eac60da96345513964"); //pass: 12345 use this site to create the sha1 https://passwordsgenerator.net/sha1-hash-generator/
+define('LOGIN_SUCCESS', "Login Success");
+define('LOGIN_ERROR', "Login Failed");
 define('LOGOUT_SUCCESS', "User has been logged out");
 
 // ----- API Actions -----
