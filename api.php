@@ -80,13 +80,9 @@ $password = $apiInput->password;
 
 	}  else {
     
-    checkSession($_SESSION['isLoggedIn']);
+  //  checkSession($_SESSION['isLoggedIn']);
 
-    $jsonRes = json_encode(
-      array(
-        'error' => true,
-        'msg' => 'No Params'
-      ));
+    $jsonRes = json_encode( responseMessage(true, FAILED_PARAMS));
       echo $jsonRes; 
       exit;
  

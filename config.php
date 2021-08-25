@@ -23,6 +23,8 @@ define('NOT_RENAMED', 'File or Folder Not Renamed');
 define('GET_DIR_SUCCESS', "Success opening folder");
 define('GET_DIR_ERROR', "Failed opening folder");
 
+define('FAILED_PARAMS', "Params or Values are not correct");
+
 // ----- LOGIN -----
 define('USERNAME', "admin");
 define('PASSWORD_HASHED', "8cb2237d0679ca88db6464eac60da96345513964"); //pass: 12345 use this site to create the sha1 https://passwordsgenerator.net/sha1-hash-generator/
