@@ -186,10 +186,3 @@ function deleteFile( $file=false){
     return responseMessage(true, FILE_NOT_DELETED);
   }
 }
-
-
-
-
-
-
-
