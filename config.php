@@ -23,7 +23,15 @@ define('NOT_RENAMED', 'File or Folder Not Renamed');
 define('GET_DIR_SUCCESS', "Success opening folder");
 define('GET_DIR_ERROR', "Failed opening folder");
 
+// ----- LOGIN -----
+define('LOGIN_SUCCESS', "User is Loggedin");
+define('LOGIN_ERROR', "User is NOT Loggedin");
+define('LOGOUT_SUCCESS', "User has been logged out");
+
 // ----- API Actions -----
+define('LOGIN', 'login');
+define('LOGOUT', 'logout');
+
 define('READ_DIR', 'readDir');
 
 define('CREATE_DIR', 'createDir');

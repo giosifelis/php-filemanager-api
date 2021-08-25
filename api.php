@@ -2,6 +2,7 @@
 require 'config.php';
 include_once './apiFunctions.php';
 include_once './utils.php';
+session_start();
 
 // header("Access-Control-Allow-Origin: *");
 // header("Content-Type: application/json; charset=UTF-8");
@@ -17,50 +18,104 @@ $action = $apiInput->action;
 $filePath = $apiInput->path;
 $fileOrFolderName = $apiInput->newName;
 $newContent = $apiInput->newContent;
+$userName = $apiInput->userName;
+$password = $apiInput->password;
 
-	if ($action == READ_DIR) {
+  if ($action === LOGIN) {
+
+    if ($userName === 'cubapiano' && $password === '12345') {
+      $_SESSION['isLoggedIn'] = true;
+
+      $jsonRes = json_encode(
+        array(
+          'error' => false,
+          'msg' => LOGIN_SUCCESS
+        ));
+        echo $jsonRes; 
+        exit;
+    } else {
+      $jsonRes = json_encode(
+        array(
+          'error' => true,
+          'msg' => LOGIN_ERROR
+        ));
+        echo $jsonRes; 
+        exit;
+    }
+
+  } elseif($action === LOGOUT) {
+
+    unset($_SESSION['isLoggedIn']);
+    session_unset();
+
+    $jsonRes = json_encode(
+      array(
+        'error' => false,
+        'msg' => LOGOUT_SUCCESS
+      ));
+      echo $jsonRes; 
+      exit;
+
+  } elseif ($action === READ_DIR) {
+
+    checkSession($_SESSION['isLoggedIn']);
 
     $data = getDirectoryTree($filePath);
 		apiResponse($data);
 
-	} elseif ($action == CREATE_DIR) {
+	} elseif ($action === CREATE_DIR) {
+
+    checkSession($_SESSION['isLoggedIn']);
   
     $data = createDir($filePath , $fileOrFolderName);
 		apiResponse($data);
      
-	} elseif ($action == RENAME_DIR) {
+	} elseif ($action === RENAME_DIR) {
+    
+    checkSession($_SESSION['isLoggedIn']);
 
     $data = renameFileOrFolder($filePath , $fileOrFolderName);
     apiResponse($data);
 
-	 } elseif ($action == DELETE_DIR) {
+	 } elseif ($action === DELETE_DIR) {
+    
+    checkSession($_SESSION['isLoggedIn']);
 
     $data = deleteDir($filePath);
     apiResponse($data);
      
-	} elseif ($action == CREATE_FILE) {
+	} elseif ($action === CREATE_FILE) {
+    
+    checkSession($_SESSION['isLoggedIn']);
 
     $data = createFile($filePath , $fileOrFolderName);
     apiResponse($data);
      
-	} elseif ($action == UPDATE_FILE) {
+	} elseif ($action === UPDATE_FILE) {
+    
+    checkSession($_SESSION['isLoggedIn']);
 
     $data = updateFile($filePath , $newContent);
     apiResponse($data);
      
-	} elseif ($action == DELETE_FILE) {
+	} elseif ($action === DELETE_FILE) {
+    
+    checkSession($_SESSION['isLoggedIn']);
 
     $data = deleteFile($filePath);
     apiResponse($data);   
 
 	}  else {
+    
+    checkSession($_SESSION['isLoggedIn']);
 
-        $jsonRes = json_encode(array(
-            'error' => true,
-            'msg' => 'No Params'
-          ));
-            echo $jsonRes; 
-            exit;
+    $jsonRes = json_encode(
+      array(
+        'error' => true,
+        'msg' => 'No Params'
+      ));
+      echo $jsonRes; 
+      exit;
  
     }
 

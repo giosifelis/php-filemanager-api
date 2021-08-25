@@ -1,5 +1,10 @@
 <?php
 
+function checkSession($sessionVar){
+  $errorMsg = json_encode(responseMessage(true, LOGIN_ERROR));
+    if(!$sessionVar) die($errorMsg);
+}
+
 function apiResponse($data) {
 	 $jsonRes = json_encode($data);
     echo $jsonRes; 

@@ -2,4 +2,4 @@
 
 A simple api with CRUD operations for markdown files on the server
 
-TODO:  Add Security, it has none.
+TODO:  Add Security. Currently it has only a hard coded user/pass
