@@ -31,7 +31,7 @@ $password = $apiInput->password;
 
   } elseif ($action === READ_DIR) {
 
-    checkSession($_SESSION['isLoggedIn']);
+    // checkSession($_SESSION['isLoggedIn']);
 
     $data = readDirectory($filePath);
 		apiResponse($data);
