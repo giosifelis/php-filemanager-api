@@ -23,35 +23,17 @@ $password = $apiInput->password;
 
   if ($action === LOGIN) {
 
-    if ($userName === USERNAME && sha1($password) === PASSWORD_HASHED) {
-      
-      $_SESSION['isLoggedIn'] = true;
-      $jsonRes = json_encode(responseMessage(false, LOGIN_SUCCESS));
-      echo $jsonRes; 
-      exit;
-
-    } else {
-      
-      $jsonRes = json_encode(responseMessage(true, LOGIN_ERROR));
-      echo $jsonRes; 
-      exit;
-      
-    }
+    login($userName, $password);
 
   } elseif($action === LOGOUT) {
 
-    unset($_SESSION['isLoggedIn']);
-    session_unset();
-
-    $jsonRes = json_encode(responseMessage(false, LOGOUT_SUCCESS));
-      echo $jsonRes; 
-      exit;
+    logout();
 
   } elseif ($action === READ_DIR) {
 
     checkSession($_SESSION['isLoggedIn']);
 
-    $data = getDirectoryTree($filePath);
+    $data = readDirectory($filePath);
 		apiResponse($data);
 
 	} elseif ($action === CREATE_DIR) {
@@ -68,7 +50,7 @@ $password = $apiInput->password;
     $data = renameFileOrFolder($filePath , $fileOrFolderName);
     apiResponse($data);
 
-	 } elseif ($action === DELETE_DIR) {
+	} elseif ($action === DELETE_DIR) {
     
     checkSession($_SESSION['isLoggedIn']);
 
