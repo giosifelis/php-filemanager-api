@@ -53,5 +53,14 @@ $newContent = $apiInput->newContent;
     $data = deleteFile($filePath);
     apiResponse($data);   
 
-	} 
+	}  else {
+
+        $jsonRes = json_encode(array(
+            'error' => true,
+            'msg' => 'Do Params'
+          ));
+            echo $jsonRes; 
+            exit;
+ 
+    }
 
