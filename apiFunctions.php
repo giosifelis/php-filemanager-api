@@ -67,6 +67,7 @@ function readDirectory($dir){
     //     // 'fullPath' => $fullPath,
     //     'dir' => $dir,
     //     'type' => filetype($fullPath),
+    //   'id' => time() + rand(10,10000),
     //     'files' => getDirectoryTree($fullPath)
     //   ];
     // } elseif(is_readable($fullPath)) {
@@ -75,6 +76,7 @@ function readDirectory($dir){
     //     // 'fullPath' => $fullPath,
     //     'dir' => $dir,
     //     'type' => filetype($fullPath),
+    //    'id' => time() + rand(10,10000)
     //   ];
     // }
   }
