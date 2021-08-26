@@ -54,7 +54,7 @@ function readDirectory($dir){
     // skip hidden files
     if($fileName{0} == ".") continue;
        $retval[] = [
-        'name' => $fileName,
+        'label' => $fileName,
         'dir' => $dir,
         'type' => filetype($fullPath)
       ];
@@ -62,7 +62,7 @@ function readDirectory($dir){
       //  use the following function to get a recrusive tree directory (might be slow as it grows)
     // if(is_dir($fullPath)) {
     //   $retval[] = [
-    //     'name' => $fileName,
+    //     'label' => $fileName,
     //     // 'fullPath' => $fullPath,
     //     'dir' => $dir,
     //     'type' => filetype($fullPath),
@@ -70,7 +70,7 @@ function readDirectory($dir){
     //   ];
     // } elseif(is_readable($fullPath)) {
     //   $retval[] = [
-    //     'name' => $fileName,
+    //     'label' => $fileName,
     //     // 'fullPath' => $fullPath,
     //     'dir' => $dir,
     //     'type' => filetype($fullPath),
