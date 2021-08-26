@@ -56,7 +56,8 @@ function readDirectory($dir){
        $retval[] = [
         'label' => $fileName,
         'dir' => $dir,
-        'type' => filetype($fullPath)
+        'type' => filetype($fullPath),
+        'id' => time() + rand(10,10000)
       ];
 
       //  use the following function to get a recrusive tree directory (might be slow as it grows)
