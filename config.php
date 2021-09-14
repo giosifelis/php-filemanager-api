@@ -27,7 +27,7 @@ define('FAILED_PARAMS', "Params or Values are not correct");
 
 // ----- LOGIN -----
 define('USERNAME', "admin");
-define('PASSWORD_HASHED', "8cb2237d0679ca88db6464eac60da96345513964"); //pass: 12345 use this site to create the sha1 https://passwordsgenerator.net/sha1-hash-generator/
+define('PASSWORD_HASHED', "hashAPassword_here"); //pass: 12345 use this site to create the sha1 https://passwordsgenerator.net/sha1-hash-generator/
 define('LOGIN_SUCCESS', "Login Success");
 define('LOGIN_ERROR', "Login Failed");
 define('LOGOUT_SUCCESS', "User has been logged out");
